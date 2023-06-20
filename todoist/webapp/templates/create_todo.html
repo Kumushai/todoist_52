@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+
+<body>
+<h1>Создать задачу</h1>
+
+<form action="/todos/add/" method="post">
+    {% csrf_token %}
+    <label>Описание:</label><br/>
+    <input type="text" name="content"/><br/>
+    <label>Статус:</label><br/>
+    <div>
+        <select name="status" id="">
+            <option value="new">Новая</option>
+            <option value="in_progress">В процессе</option>
+            <option value="done">Сделано</option>
+        </select>
+    </div>
+    <label>Дата выполнения:</label><br/>
+    <input type="text" name="created_at"/><br/>
+    <br/>
+    <input type="submit" value="Send"/>
+</form>
+
+<a href="/">На главную</a>
+</body>
+</html>
