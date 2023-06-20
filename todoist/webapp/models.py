@@ -9,12 +9,10 @@ class Todo(models.Model):
     status = models.CharField(max_length=50, null=False, blank=False, verbose_name="Статус", choices=status_choices)
     created_at = models.CharField(max_length=50, null=True, blank=True, verbose_name="Дата выполнения")
 
+    def __str__(self):
+        return f"{self.pk} {self.content}: {self.status}"
 
-def __str__(self):
-    return f"{self.pk} {self.content}: {self.status}"
-
-
-class Meta:
-    db_table = "To-Do list"
-    verbose_name = "Задача"
-    verbose_name_plural = "Задачи"
+    class Meta:
+        db_table = "To-Do list"
+        verbose_name = "Задача"
+        verbose_name_plural = "Задачи"
