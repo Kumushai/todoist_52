@@ -9,7 +9,7 @@ class TodoAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'content']
     list_filter = ['created_at']
     search_fields = ['content', 'status']
-    fields = ['content', 'status', 'created_at']
+    fields = ['content', 'status', 'details', 'created_at']
 
 
 admin.site.register(Todo, TodoAdmin)

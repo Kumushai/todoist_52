@@ -13,7 +13,9 @@
     <h6 >Статус: {{ todo.status }}</h6>
     <p>Дата выполнения: {{ todo.created_at}}</p>
 
-    <form action="{% url 'delete_todo' %}" method="post">
+    <a href=""></a>
+
+    <form action="{% url 'delete_todo' %}?id={{ todo.id }}" method="post">
       {% csrf_token %}
       {{ delete_form.todo.id }}
 

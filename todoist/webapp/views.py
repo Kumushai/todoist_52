@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect, HttpResponseNotAllowed
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 from webapp.models import Todo
@@ -18,6 +18,7 @@ def todo_create_view(request):
         Todo.objects.create(
             content=request.POST.get("content"),
             status=request.POST.get("status"),
+            details=request.POST.get("details"),
             created_at=request.POST.get("created_at"),
         )
         return HttpResponseRedirect("/")
@@ -32,7 +33,8 @@ def todo_view(request):
 
 def delete_todo_view(request):
     # if request.method == 'POST':
-    todo_id = request.POST.get('id')
+    todo_id = request.GET.get('id')
+    print(todo_id)
     todo = Todo.objects.get(id=todo_id)
     todo.delete()
     return redirect('home')

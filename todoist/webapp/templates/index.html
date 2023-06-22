@@ -31,7 +31,7 @@
 
       <div class="card-body">
         <h5 class="card-title">{{ todo.content }}</h5>
-        <p class="card-text">{{ todo.status }}</p>
+        <p class="card-text">{{ todo.get_status_display }}</p>
           <p class="card-text">{{ todo.created_at }}</p>
         <a href="todo/?id={{ todo.id }}" class="btn btn-primary">Детальный просмотр</a>
       </div>
