@@ -17,13 +17,11 @@
             </select>
         </div><br/>
         <label>Детальное описание:</label><br/>
-        <textarea name="details" rows="4" cols="50"></textarea><br/>
-        <label>Дата выполнения:</label><br/>
+        <textarea name="details"></textarea>
+        <br/><label>Дата выполнения:</label><br/>
         <input type="text" name="created_at"/><br/>
         <br/>
         <input type="submit" value="Send"/>
     </form>
-
-    <a href="{% url "index" %}">На главную</a>
 
 {% endblock %}
