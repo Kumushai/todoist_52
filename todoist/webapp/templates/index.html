@@ -1,50 +1,43 @@
+{% extends 'base.html' %}
 {% load static %}
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Main</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static "css/style.css" %}">
-    <style>
-        .card {
-            margin-bottom: 20px;
-        }
-    </style>
+{% block link %}
+    <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url "todo_add" %}">Создать задачу</a>
+    </li>
+{% endblock %}
+{% block content %}
 
-</head>
-<body>
-<h1>To-Do list</h1>
+        <style>
+            .card {
+                margin-bottom: 20px;
+            }
+        </style>
 
-<a href="{% url "todo_add" %}">Создать задачу</a>
-<br>
-{% for todo in todo_list %}
+    <h1>Список задач:</h1>
 
-    <div class="card" style="width: 18rem;">
+    <br>
+    {% for todo in todo_list %}
 
-        {% if todo.status == 'new' %}
-            <img src="{% static 'images/new.jpeg' %}" class="card-img-top" alt="...">
-        {% elif todo.status == 'in_progress' %}
-            <img src="{% static 'images/in_progress.jpeg' %}" class="card-img-top" alt="...">
-        {% elif todo.status == 'done' %}
-            <img src="{% static 'images/done.jpeg' %}" class="card-img-top" alt="...">
-        {% endif %}
+        <div class="card" style="width: 18rem;">
+
+            {% if todo.status == 'new' %}
+                <img src="{% static 'images/new.jpeg' %}" class="card-img-top" alt="...">
+            {% elif todo.status == 'in_progress' %}
+                <img src="{% static 'images/in_progress.jpeg' %}" class="card-img-top" alt="...">
+            {% elif todo.status == 'done' %}
+                <img src="{% static 'images/done.jpeg' %}" class="card-img-top" alt="...">
+            {% endif %}
 
 
-      <div class="card-body">
-        <h5 class="card-title">{{ todo.content }}</h5>
-        <p class="card-text">{{ todo.get_status_display }}</p>
-          <p class="card-text">{{ todo.created_at }}</p>
-        <a href="{% url "todo_view" todo.pk %}" class="btn btn-primary">Детальный просмотр</a>
-      </div>
-    </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ todo.content }}</h5>
+            <p class="card-text">{{ todo.get_status_display }}</p>
+              <p class="card-text">{{ todo.created_at }}</p>
+            <a href="{% url "todo_view" todo.pk %}" class="btn btn-primary">Детальный просмотр</a>
+          </div>
+        </div>
 
-{% endfor %}
+    {% endfor %}
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-</body>
-</html>
+{% endblock %}
 

@@ -1,13 +1,13 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>To do</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}Задача{% endblock %}
+
+{% block link %}
+    <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url "todo_add" %}">Создать задачу</a>
+    </li>
+{% endblock %}
+
+{% block content %}
 <div>
     <h1>Описание: {{ todo.content }}</h1>
     <h3 >Статус: {{ todo.get_status_display }}</h3>
@@ -17,5 +17,4 @@
     <a href="{% url "index" %}" >На главную</a>
 </div>
 
-</body>
-</html>
+{% endblock %}
