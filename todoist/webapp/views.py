@@ -29,11 +29,8 @@ def todo_view(request, *args, pk, **kwargs):
     return render(request, 'todo_view.html', context={'todo': todo})
 
 
-def delete_todo_view(request):
-    # if request.method == 'POST':
-    todo_id = request.GET.get('id')
-    print(todo_id)
-    todo = Todo.objects.get(id=todo_id)
+def delete_todo_view(request, *args, pk, **kwargs):
+    todo = Todo.objects.get(id=pk)
     todo.delete()
     return redirect('index')
 
