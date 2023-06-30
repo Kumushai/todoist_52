@@ -33,10 +33,12 @@
             <h5 class="card-title">{{ todo.content }}</h5>
             <p class="card-text">{{ todo.get_status_display }}</p>
               <p class="card-text">{{ todo.created_at }}</p>
-            <a href="{% url "todo_view" todo.pk %}" class="btn btn-primary">Детальный просмотр</a>
-            <a href="{% url "update_todo" todo.pk %}" class="btn btn-primary">Редактировать</a>
-            <a href="{% url "delete_todo" todo.pk %}" class="btn btn-primary">Удалить</a>
 
+            <div class="btn-group">
+              <a href="{% url "todo_view" todo.pk %}" class="btn btn-primary" >Детали</a>
+              <a href="{% url "update_todo" todo.pk %}" class="btn btn-warning">Изменить</a>
+              <a href="{% url "delete_todo" todo.pk %}" class="btn btn-danger">Удалить</a>
+            </div>
 
           </div>
         </div>
